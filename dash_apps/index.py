@@ -8,14 +8,9 @@ import dash_html_components as html
 import pandas as pd
 from datetime import *
 
-from apps import alex_dashboard, personalised_dashboard
+from apps import alex_dashboard
+from apps import personalised_dashboard
 from app import app
-
-
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')
-])
 
 app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
@@ -27,8 +22,10 @@ app.css.append_css({
 def display_page(pathname):
     if pathname == '/preloaded/alex':
          return alex_dashboard.layout
+    elif pathname == '/dynamic':
+        return alex_dashboard.layout  # CHANGE
     else:
-        return personalised_dashboard.layout
+        return 'Uh-oh'
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(port=998, debug=True)

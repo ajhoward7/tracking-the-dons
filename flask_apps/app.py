@@ -31,7 +31,7 @@ def authorize():
 
 @server.route('/geo', methods=('GET','POST'))
 def show_geo_vis():
-    
+
     return "This is Taylor's part"
 
 

@@ -4,6 +4,7 @@ from datetime import *
 import numpy as np
 import math
 import json
+import os
 
 metres_mile = 1609.34
 workout_type_dict = {0:'Run',1:'Race',2:'Long Run',3:'Workout'}
@@ -12,7 +13,7 @@ days_dict = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Frida
 
 def preprocess_activities(username):
 
-    data = json.load(open('{}/activities.json'.format(username)))
+    data = json.load(open('../users/{}/activities.json'.format(username)))
     activities_df = json_normalize(data)
 
     activities_df = activities_df[

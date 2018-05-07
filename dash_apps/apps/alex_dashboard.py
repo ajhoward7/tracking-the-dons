@@ -3,37 +3,19 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
-from plotly_plotting import preprocess_activities
 from datetime import *
 import polyline
 
 from app import app
+from df_preprocessing import df_preprocessing
+from plotly_plotting import preprocess_activities
 
 mapbox_access_token = 'pk.eyJ1IjoiamFja2x1byIsImEiOiJjajNlcnh3MzEwMHZtMzNueGw3NWw5ZXF5In0.fk8k06T96Ml9CLGgKmk81w'
-
-activities_df = preprocess_activities('alex')
-
 days_dict = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'}
 
-activities_grouped_df = activities_df.groupby(['date'], as_index=False)['miles'].sum()
-activities_grouped_df['dow'] = activities_grouped_df.date.apply(lambda x: x.weekday())
-activities_grouped_df['week_start'] = activities_grouped_df.date.apply(lambda x: x - timedelta(days=x.weekday()))
+activities_df = preprocess_activities('0_alex')
 
-miles_per_week = activities_grouped_df.groupby(['week_start'], as_index=False).miles.sum()
-by_week_df = pd.DataFrame(activities_grouped_df.week_start.unique(), columns=['week_start'])
-by_week_df['miles'] = 0
-
-for i in range(7):
-    by_week_df['{}'.format(i)] = i
-
-for i in range(7):
-    by_week_df = pd.merge(by_week_df, activities_grouped_df, left_on=['week_start', '{}'.format(i)],
-                          right_on=['week_start', 'dow'], how='left', suffixes=('', '_{}'.format(i)))
-
-by_week_df = by_week_df[['week_start', 'miles_0', 'miles_1', 'miles_2', 'miles_3', 'miles_4', 'miles_5', 'miles_6']]
-by_week_df['year'] = by_week_df['week_start'].apply(lambda x: x.year)
-by_week_df.fillna(0, inplace=True)
-by_week_df = pd.merge(by_week_df, miles_per_week, how='left', on='week_start')
+by_week_df = df_preprocessing(activities_df)
 
 
 layout = html.Div([
