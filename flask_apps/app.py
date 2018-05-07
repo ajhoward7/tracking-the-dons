@@ -29,5 +29,11 @@ def authorize():
     return redirect('http://{}/{}'.format(ip,username))
 
 
+@server.route('/geo', methods=('GET','POST'))
+def show_geo_vis():
+    
+    return "This is Taylor's part"
+
+
 if __name__ == "__main__":
     server.run(debug=True)
