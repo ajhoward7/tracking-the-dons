@@ -6,6 +6,8 @@ import plotly.graph_objs as go
 from datetime import *
 import polyline
 import os
+from flask_caching import Cache
+import uuid
 
 from app import app
 
@@ -20,22 +22,41 @@ days_dict = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Frida
 
 #######################################################################################################################
 
-user_files = os.listdir('../users/')
-number_str = [str(x) for x in range(10)]
-user_files = [file for file in user_files if file[0] in number_str]
-user_files.sort()
-latest_user = user_files[0]
+cache = Cache(app.server, config={
+    'CACHE_TYPE': 'redis',
+    # Note that filesystem cache doesn't work on systems with ephemeral
+    # filesystems like Heroku.
+    'CACHE_TYPE': 'filesystem',
+    'CACHE_DIR': 'cache-directory',
 
-activities_df = preprocess_activities(latest_user)
+    # should be equal to maximum number of users on the app at a single time
+    # higher numbers will store more data in the filesystem / redis cache
+    'CACHE_THRESHOLD': 200
+})
 
-by_week_df = df_preprocessing(activities_df)
+def get_dataframe(session_id):
+    @cache.memoize()
+    def query_and_serialize_data(session_id):
 
+        user_files = os.listdir('../users/')
+        number_str = [str(x) for x in range(10)]
+        user_files = [file for file in user_files if file[0] in number_str]
+        user_files.sort()
+        latest_user = user_files[0]
 
+        activities_df = preprocess_activities(latest_user)
+
+        by_week_df = df_preprocessing(activities_df)
+
+        return activities_df, by_week_df
+
+    return query_and_serialize_data(session_id)
 
 
 #######################################################################################################################
 def serve_layout():
-
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
 
     layout = html.Div([
         html.Div([
@@ -104,6 +125,9 @@ layout = serve_layout()
     dash.dependencies.Output('crossfilter-indicator-scatter-2', 'figure'),
     [dash.dependencies.Input('crossfilter-year--slider-2', 'value')])
 def update_graph_2(year_value):
+
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
 
     df2 = activities_df[activities_df['year'] == year_value]
 
@@ -200,7 +224,8 @@ def create_time_series_2(this_week, title):
     [dash.dependencies.Input('crossfilter-indicator-scatter-2', 'hoverData')])
 
 def update_mileage_2(hoverData):
-
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
 
     id = hoverData['points'][0]['customdata']
     activity = activities_df[activities_df.id == id]
@@ -259,7 +284,8 @@ def create_geo_2(summary_polyline):
     dash.dependencies.Output('run-geo-2', 'figure'),
     [dash.dependencies.Input('crossfilter-indicator-scatter-2', 'hoverData')])
 def update_geo_2(hoverData):
-
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
     id = hoverData['points'][0]['customdata']
     summary_polyline = list(activities_df[activities_df.id==id]['map.summary_polyline'])[0]
 
@@ -267,7 +293,8 @@ def update_geo_2(hoverData):
 
 
 def create_parallel_2(by_week_df_2):
-
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
     dimensions = []
     for i in range(7):
         dimensions.append(
@@ -299,7 +326,8 @@ def create_parallel_2(by_week_df_2):
     dash.dependencies.Output('parallel-2', 'figure'),
     [dash.dependencies.Input('crossfilter-year--slider-2', 'value')])
 def update_parallel_2(year_value):
-
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
     by_week_df_2 = by_week_df[by_week_df.year==year_value]
 
     return create_parallel_2(by_week_df_2)
@@ -326,6 +354,8 @@ def create_distance_hist_2(all_miles, this_miles):
     dash.dependencies.Output('miles-hist-2', 'figure'),
     [dash.dependencies.Input('crossfilter-indicator-scatter-2', 'hoverData')])
 def update_distance_hist_2(hoverData):
+    session_id = str(uuid.uuid4())
+    activities_df, by_week_df = get_dataframe(session_id)
 
     id = hoverData['points'][0]['customdata']
     activity = activities_df[activities_df.id == id]

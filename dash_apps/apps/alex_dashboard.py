@@ -17,7 +17,6 @@ activities_df = preprocess_activities('0_alex')
 
 by_week_df = df_preprocessing(activities_df)
 
-
 layout = html.Div([
     html.Div([
         html.H2("Tracking the Dons - Alex")
