@@ -35,7 +35,7 @@ layout = html.Div([
         marks={str(year): str(year) for year in activities_df['year'].unique()}
     ), style={'width': '45%', 'padding': '0px 30px 30px 30px'}),
 
-    html.Div(html.H4(html.A("Make the most of your dashboard - Tutorial", href='http://35.164.243.185/tutorial'))),
+    html.Div(html.H4(html.A("Make the most of this dashboard - Tutorial", href='http://35.164.243.185/tutorial'))),
 
     html.Div(
         className="row",
