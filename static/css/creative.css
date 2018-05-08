@@ -321,6 +321,20 @@ header.masthead p {
   background-color: #017215 !important;
 }
 
-.btn-secondary:active, .btn-primary:focus {
+.btn-secondary:active, .btn-tertiary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+.btn-tertiary {
+  background-color: #544f4f;
+  border-color: #544f4f;
+}
+
+.btn-tertiary:hover, .btn-tertiary:focus, .btn-tertiary:active {
+  color: #544f4f;
+  background-color: #544f4f !important;
+}
+
+.btn-tertiary:active, .btn-tertiary:focus {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
