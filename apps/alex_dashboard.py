@@ -18,13 +18,13 @@ activities_df = preprocess_activities('0_alex')
 by_week_df = df_preprocessing(activities_df)
 
 layout = html.Div([
-    html.Div([
-        html.H2("Tracking the Dons - Alex")
-    ], className='banner'),
-
-    html.Div([
-        html.A("GO HOME", href='http://35.164.243.185/')
-    ]),
+    html.Div(className="row",
+             children=[
+                 html.Div(
+                     className="ten columns",
+                     children=[html.H3("Choose the year:")]),
+                 html.Div(className="two columns",
+                          children=[html.H3(html.A("Go Home", href="http://35.164.243.185/"))])]),
 
     html.Div(dcc.Slider(
         id='crossfilter-year--slider',
@@ -34,6 +34,8 @@ layout = html.Div([
         step=None,
         marks={str(year): str(year) for year in activities_df['year'].unique()}
     ), style={'width': '45%', 'padding': '0px 30px 30px 30px'}),
+
+    html.Div(html.H4(html.A("Make the most of your dashboard - Tutorial", href='http://35.164.243.185/tutorial'))),
 
     html.Div(
         className="row",

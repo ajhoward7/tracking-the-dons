@@ -56,6 +56,9 @@ def show_geo_vis():
     return "This is Taylor's part"
 
 
+@server.route('/tutorial', methods=('GET','POST'))
+
+
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
