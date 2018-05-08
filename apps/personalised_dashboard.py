@@ -62,7 +62,7 @@ def serve_layout():
         ]),
 
         html.Div([
-            html.H3("Choose your year:")
+            html.H3("Choose your year:\t\t\t"),html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/')
         ], className='banner'),
 
         html.Div(dcc.Slider(
