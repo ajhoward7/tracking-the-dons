@@ -1,5 +1,4 @@
 import dash
-import os
 from flask import Flask
 
 server = Flask(__name__)
