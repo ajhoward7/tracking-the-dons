@@ -45,9 +45,9 @@ def authorize():
     access_token = json_data["access_token"]
     username = scrape_activities(access_token)
 
-    ip = '127.0.0.1:5000'
+    ip = '35.164.243.185'
 
-    return redirect('http://{}/{}'.format(ip,username))
+    return redirect('http://{}/dashboard/user/{}'.format(ip,username))
 
 
 @server.route('/geo', methods=('GET','POST'))
