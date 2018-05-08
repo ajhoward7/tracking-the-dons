@@ -40,7 +40,7 @@ def serve_layout():
 
     layout = html.Div([
         html.Div([
-            html.H2("Personaliserd Dashboard")
+            html.H2("Personalised Dashboard")
         ], className='banner'),
 
         html.Div([
