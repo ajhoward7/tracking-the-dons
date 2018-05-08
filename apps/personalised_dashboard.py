@@ -211,7 +211,7 @@ def update_mileage_2(hoverData):
 
     this_week['day'] = this_week.date.apply(lambda x: x.weekday())
     total_miles = this_week.miles.sum()
-    title = '<b>{} - {}</b><br>Total Miles: {}'.format(week_start.date(), week_end.date(), int(total_miles))
+    title = '<b>Weekly Training Snapshot</b><br>Total Miles: {}'.format(int(total_miles))
 
     return create_time_series_2(this_week, title)
 
@@ -226,6 +226,7 @@ def create_geo_2(summary_polyline):
             lat=df.lat,
             lon=df.long,
             mode='lines',
+            hoverinfo='text',
             marker=go.Marker(
                 size=17,
                 color='rgb(255, 0, 0)',
@@ -276,7 +277,7 @@ def create_parallel_2(by_week_df_2):
 
     data = [
         go.Parcoords(
-            line=dict(color=by_week_df['miles'],
+            line=dict(color=by_week_df_2['miles'],
                       colorscale='Hot',
                       showscale=True,
                       reversescale=True),
@@ -286,9 +287,9 @@ def create_parallel_2(by_week_df_2):
     ]
 
     layout = go.Layout(
-        plot_bgcolor='#E5E5E5',
+        plot_bgcolor='rgb(243, 243, 243)',
         paper_bgcolor='#E5E5E5',
-        title='Miles per week broken down by day'
+        title='Weekly mileage traces'
     )
 
     return go.Figure(data=data, layout=layout)
@@ -318,7 +319,13 @@ def create_distance_hist_2(all_miles, this_miles):
     data = [trace0, trace1]
     layout = go.Layout(barmode='stack',
                        showlegend=False,
-                       bargap=0.2)
+                       bargap=0.2,
+                       title='Distance Histogram',
+                       xaxis=dict(
+                           title='Distance (Miles)'
+                       ),
+                       yaxis=dict(title='# Runs')
+                       )
     return go.Figure(data=data, layout=layout)
 
 
