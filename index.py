@@ -66,4 +66,4 @@ def display_page(pathname):
             return personalised_dashboard.layout
 
 if __name__ == '__main__':
-    app.run_server('0.0.0.0', port=80)
+    app.run_server(host='0.0.0.0', port=80)
