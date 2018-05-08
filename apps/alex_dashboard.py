@@ -111,7 +111,7 @@ def update_graph(year_value):
         data.append(trace)
 
     layout = go.Layout(
-        title='Run Summary',
+        title='Hover over runs for interactivity and linked views!',
         hovermode='closest',
         xaxis=dict(
             title='Distance (Miles)',
