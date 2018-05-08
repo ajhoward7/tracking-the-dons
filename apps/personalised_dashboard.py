@@ -37,6 +37,19 @@ by_week_df = df_preprocessing(activities_df)
 #######################################################################################################################
 def serve_layout():
 
+    user_files = os.listdir('users/')
+    number_str = [str(x) for x in range(10)]
+    user_files = [file for file in user_files if file[0] in number_str]
+    user_files.sort()
+    latest_user = user_files[-1]
+
+    activities_df = preprocess_activities(latest_user)
+
+    by_week_df = df_preprocessing(activities_df)
+
+    global activities_df
+    global by_week_df
+
 
     layout = html.Div([
         html.Div([
