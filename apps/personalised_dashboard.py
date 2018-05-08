@@ -353,7 +353,7 @@ def create_distance_hist_2(all_miles, this_miles):
     layout = go.Layout(barmode='stack',
                        showlegend=False,
                        bargap=0.2,
-                       title='Distance Histogram<br/>Where does this run stack up?',
+                       title='Distance Histogram<br>Where does this run stack up?',
                        xaxis=dict(
                            title='Distance (Miles)'
                        ),
