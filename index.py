@@ -17,7 +17,7 @@ from credentials import client_id, client_secret
 import requests
 import json
 
-redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F54.214.153.34%2Fauthorize&client_id=20812'
+redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F35.164.243.185%2Fauthorize&client_id=20812'
 
 wsgi_app = server.wsgi_app
 
@@ -34,7 +34,7 @@ app.css.append_css({
 
 @server.route('/')
 def home():
-    return render_template('index.html', strava_url=redirect_url, preloaded_url='http://127.0.0.1:8050/preloaded/alex')
+    return render_template('index.html', strava_url=redirect_url)
 
 
 @server.route('/authorize', methods=('GET','POST'))
