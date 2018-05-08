@@ -59,7 +59,7 @@ def serve_layout():
                          className="ten columns",
                          children=[html.H3("Choose your year:")]),
                      html.Div(className="two columns",
-                              children=[html.A("Go Home", href="http://35.164.243.185/")])]),
+                              children=[html.H3(html.A("Go Home", href="http://35.164.243.185/"))])]),
 
         #          [html.H3(html.A("Go Home", href='http://35.164.243.185/'))
         # ]),
