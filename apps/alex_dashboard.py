@@ -22,6 +22,10 @@ layout = html.Div([
         html.H2("Tracking the Dons - Alex")
     ], className='banner'),
 
+    html.Div([
+        html.A("GO HOME", href='http://http://35.164.243.185/')
+    ]),
+
     html.Div(dcc.Slider(
         id='crossfilter-year--slider',
         min=activities_df['year'].min(),
