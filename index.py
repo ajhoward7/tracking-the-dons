@@ -63,7 +63,7 @@ def display_page(pathname):
         return alex_dashboard.layout
     elif pathname != None:
         if'/dashboard/user/' in pathname:
-            return personalised_dashboard.layout
+            return personalised_dashboard.serve_layout()
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=80)
