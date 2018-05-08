@@ -57,6 +57,8 @@ def show_geo_vis():
 
 
 @server.route('/tutorial', methods=('GET','POST'))
+def show_tutorial():
+    return render_template('tutorial.html')
 
 
 @app.callback(Output('page-content', 'children'),
