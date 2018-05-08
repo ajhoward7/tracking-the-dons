@@ -52,13 +52,18 @@ def serve_layout():
 
 
     layout = html.Div([
-        html.Div([
-            html.H2("Personalised Dashboard")
-        ], className='banner'),
 
         html.Div([
-            html.A("GO HOME", href='http://35.164.243.185/')
+            html.H3(html.A("Go Home", href='http://35.164.243.185/'))
         ]),
+
+        html.Div([
+            html.H3(html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/'))
+        ]),
+
+        html.Div([
+            html.H3("Choose your year:")
+        ], className='banner'),
 
         html.Div(dcc.Slider(
             id='crossfilter-year--slider-2',
