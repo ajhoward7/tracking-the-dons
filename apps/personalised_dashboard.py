@@ -25,6 +25,7 @@ number_str = [str(x) for x in range(10)]
 user_files = [file for file in user_files if file[0] in number_str]
 user_files.sort()
 latest_user = user_files[-1]
+print(latest_user)
 
 activities_df = preprocess_activities(latest_user)
 
