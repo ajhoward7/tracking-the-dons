@@ -56,10 +56,10 @@ def serve_layout():
         html.Div(className="row",
                  children=[
                      html.Div(
-                         className="six columns",
+                         className="ten columns",
                          children=[html.H3("Choose your year:")]),
-                     html.Div(className="six columns",
-                              children=[html.H3("Choose your year 2:")])]),
+                     html.Div(className="two columns",
+                              children=[html.A("Go Home", href="http://35.164.243.185/")])]),
 
         #          [html.H3(html.A("Go Home", href='http://35.164.243.185/'))
         # ]),
