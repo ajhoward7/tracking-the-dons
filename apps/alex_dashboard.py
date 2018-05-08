@@ -243,7 +243,6 @@ def update_geo(hoverData):
 
 def create_parallel(by_week_df_2):
     dimensions = []
-    print(by_week_df_2)
     for i in range(7):
         dimensions.append(
             dict(range=[0, 20],
