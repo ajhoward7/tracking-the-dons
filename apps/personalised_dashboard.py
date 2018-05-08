@@ -53,17 +53,24 @@ def serve_layout():
 
     layout = html.Div([
 
-        html.Div([
-            html.H3(html.A("Go Home", href='http://35.164.243.185/'))
-        ]),
+        html.Div(className="row",
+                 children=[
+                     html.Div(
+                         className="six columns",
+                         children=[html.H3("Choose your year:")]),
+                     html.Div(className="six columns",
+                              children=[html.H3("Choose your year 2:")])]),
 
-        html.Div([
-            html.H3(html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/'))
-        ]),
-
-        html.Div([
-            html.H3("Choose your year:\t\t\t",html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/'))
-        ], className='banner'),
+        #          [html.H3(html.A("Go Home", href='http://35.164.243.185/'))
+        # ]),
+        #
+        # html.Div([
+        #     html.H3(html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/'))
+        # ]),
+        #
+        # html.Div([
+        #     html.H3("Choose your year:",html.A("Make the most of your dashboard - TUTORIAL", href='http://35.164.243.185/'))
+        # ], className='banner'),
 
         html.Div(dcc.Slider(
             id='crossfilter-year--slider-2',
