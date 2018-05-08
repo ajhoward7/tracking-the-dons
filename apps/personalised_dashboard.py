@@ -26,8 +26,6 @@ user_files = [file for file in user_files if file[0] in number_str]
 user_files.sort()
 latest_user = user_files[-1]
 
-username = user_files.split()
-
 activities_df = preprocess_activities(latest_user)
 
 by_week_df = df_preprocessing(activities_df)
@@ -41,7 +39,7 @@ def serve_layout():
 
     layout = html.Div([
         html.Div([
-            html.H2("Personaliserd Dashboard: Alex")
+            html.H2("Personaliserd Dashboard")
         ], className='banner'),
 
         html.Div([
