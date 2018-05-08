@@ -23,7 +23,7 @@ layout = html.Div([
     ], className='banner'),
 
     html.Div([
-        html.A("GO HOME", href='http://http://35.164.243.185/')
+        html.A("GO HOME", href='http://35.164.243.185/')
     ]),
 
     html.Div(dcc.Slider(
