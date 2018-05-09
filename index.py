@@ -4,6 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 from datetime import *
+import os
 
 from apps import alex_dashboard, personalised_dashboard
 from app import app, server
@@ -66,7 +67,17 @@ def display_page(pathname):
         return alex_dashboard.layout
     elif pathname != None:
         if'/dashboard/user/' in pathname:
-            return personalised_dashboard.serve_layout()
+            user_files = os.listdir('users/')
+
+            url_user = pathname.split('/')[-1]
+            if url_user in user_files:
+                return personalised_dashboard.serve_layout(url_user)
+
+            number_str = [str(x) for x in range(10)]
+            user_files = [file for file in user_files if file[0] in number_str]
+            user_files.sort()
+            latest_user = user_files[-1]
+            return personalised_dashboard.serve_layout(latest_user)
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=80)
