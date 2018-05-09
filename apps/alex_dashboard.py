@@ -159,9 +159,7 @@ def create_time_series(this_week, title):
             marker=dict(color=[custom_colours[row['workout_type']]],
                         opacity = [0.75]),
             hovertext=[row['text']],
-            hoverinfo = 'text'))
-
-
+            hoverinfo='text'))
 
     layout = dict(
         hovermode='closest',
@@ -177,7 +175,6 @@ def create_time_series(this_week, title):
 @app.callback(
     dash.dependencies.Output('weekly-mileage', 'figure'),
     [dash.dependencies.Input('crossfilter-indicator-scatter', 'hoverData')])
-
 def update_mileage(hoverData):
     id = hoverData['points'][0]['customdata']
     activity = activities_df[activities_df.id == id]
@@ -227,7 +224,6 @@ def create_geo(summary_polyline):
             style='light'
         ),
     )
-
     fig = dict(data=data, layout=layout)
 
     return fig
@@ -268,7 +264,6 @@ def create_parallel(by_week_df_2):
     )
 
     return go.Figure(data=data, layout=layout)
-
 
 
 @app.callback(

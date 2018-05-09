@@ -110,8 +110,3 @@ def group_df_2(activities_df):
         by_week_activity_df['miles_Long Run'])
 
     return activities_grouped_df_2, by_week_activity_df
-
-
-
-
-
