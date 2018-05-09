@@ -34,7 +34,7 @@ class AllTrailsLayer(BaseLayer):
     def bbox(self):
         return BoundingBox(north=37.801421, west=-122.517339, south=37.730097, east=-122.424474)
 
-if __name__ == '__main__':
-    data = read_csv('users/0_alex/alex.csv')
-    geoplotlib.add_layer(AllTrailsLayer(map_data=data))
-    geoplotlib.show()
+# if __name__ == '__main__':
+#     data = read_csv('users/0_alex/alex.csv')
+#     geoplotlib.add_layer(AllTrailsLayer(map_data=data))
+#     geoplotlib.show()

@@ -9,6 +9,7 @@ from datetime import *
 
 from apps import alex_dashboard, personalised_dashboard
 from app import app, server
+from geo_vis import *
 
 from flask import Flask, redirect, render_template, url_for, flash, request
 
@@ -52,8 +53,10 @@ def authorize():
 
 @server.route('/geo', methods=('GET','POST'))
 def show_geo_vis():
+    data = read_csv('users/0_alex/alex.csv')
+    geoplotlib.add_layer(AllTrailsLayer(map_data=data))
 
-    return "This is Taylor's part"
+    return geoplotlib.show()
 
 
 @server.route('/tutorial', methods=('GET','POST'))
