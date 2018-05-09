@@ -35,13 +35,9 @@ by_week_df = df_preprocessing(activities_df)
 
 
 #######################################################################################################################
-def serve_layout():
+def serve_layout(latest_user):
 
-    user_files = os.listdir('users/')
-    number_str = [str(x) for x in range(10)]
-    user_files = [file for file in user_files if file[0] in number_str]
-    user_files.sort()
-    latest_user = user_files[-1]
+
 
     activities_df = preprocess_activities(latest_user)
 
@@ -59,7 +55,7 @@ def serve_layout():
                          className="ten columns",
                          children=[html.H3("Choose your year:")]),
                      html.Div(className="two columns",
-                              children=[html.H3(html.A("Go Home", href="http://35.164.243.185/"))])]),
+                              children=[html.H3(html.A("Go Home", href="/"))])]),
 
         #          [html.H3(html.A("Go Home", href='http://35.164.243.185/'))
         # ]),
@@ -81,7 +77,7 @@ def serve_layout():
             marks={str(year): str(year) for year in activities_df['year'].unique()}
         ), style={'width': '45%', 'padding': '0px 30px 30px 30px'}),
 
-        html.Div(html.H4(html.A("Make the most of your dashboard - Tutorial", href='http://35.164.243.185/tutorial'))),
+        html.Div(html.H4(html.A("Make the most of your dashboard - Tutorial", href='/tutorial'))),
 
         html.Div(
             className="row",

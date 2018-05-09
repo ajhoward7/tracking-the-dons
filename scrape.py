@@ -75,7 +75,10 @@ def scrape_activities(access_token):
 
     print("Obtaining activity data...")
 
-    activities = client.get_activities(limit=1500)
+    with open('scraped_users','a+') as f:
+        f.write('{} {}\n'.format(user['firstname'],user['lastname']))
+
+    activities = client.get_activities(limit=1000)
 
     if not os.path.exists('users/{}'.format(username)):
         os.makedirs('users/{}'.format(username))
@@ -86,8 +89,7 @@ def scrape_activities(access_token):
     with open('users/{}/user_profile.json'.format(username),'w') as f:
         f.write(json.dumps(user, indent=4))
 
-    with open('scraped_users','a+') as f:
-        f.write('{} {}\n'.format(user['firstname'],user['lastname']))
+
 
     return username
 
