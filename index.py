@@ -15,7 +15,9 @@ from credentials import client_id, client_secret
 import requests
 import json
 
-redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F52.37.22.103%2Fauthorize&client_id=20812'
+ip = '52.37.22.103'
+
+redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F{}%2Fauthorize&client_id=20812'.format(ip)
 
 wsgi_app = server.wsgi_app
 
@@ -42,8 +44,6 @@ def authorize():
     json_data = json.loads(r._content)
     access_token = json_data["access_token"]
     username = scrape_activities(access_token)
-
-    ip = '35.164.243.185'
 
     return redirect('http://{}/dashboard/user/{}'.format(ip,username))
 
