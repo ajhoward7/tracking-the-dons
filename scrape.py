@@ -78,7 +78,7 @@ def scrape_activities(access_token):
     with open('scraped_users','a+') as f:
         f.write('{} {}\n'.format(user['firstname'],user['lastname']))
 
-    activities = client.get_activities(limit=1500)
+    activities = client.get_activities(limit=500)
 
     if not os.path.exists('users/{}'.format(username)):
         os.makedirs('users/{}'.format(username))
