@@ -15,7 +15,7 @@ from credentials import client_id, client_secret
 import requests
 import json
 
-redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F35.164.243.185%2Fauthorize&client_id=20812'
+redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F52.37.22.103%2Fauthorize&client_id=20812'
 
 wsgi_app = server.wsgi_app
 
