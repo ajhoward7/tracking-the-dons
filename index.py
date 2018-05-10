@@ -18,7 +18,7 @@ from credentials import client_id, client_secret
 import requests
 import json
 
-ip = '52.37.22.103'
+ip = '54.218.67.119/'
 
 redirect_url = 'https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2F{}%2Fauthorize&client_id=20812'.format(
     ip)
