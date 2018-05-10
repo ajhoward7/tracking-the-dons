@@ -52,10 +52,11 @@ def authorize():
 
 @server.route('/geo', methods=('GET','POST'))
 def show_geo_vis():
-    data = read_csv('users/0_alex/alex.csv')
-    geoplotlib.add_layer(AllTrailsLayer(map_data=data))
+    #data = read_csv('users/0_alex/alex.csv')
+    #geoplotlib.add_layer(AllTrailsLayer(map_data=data))
 
-    return geoplotlib.show()
+    #return geoplotlib.show()
+    return "Nothing, for now"
 
 
 @server.route('/tutorial', methods=('GET','POST'))
