@@ -31,4 +31,4 @@ We are still in development, but once the app goes live, we will share it here!
 2. `$ cd tracking-the-dons`
 3. `$ pip install -r requirements.txt`
 4. `$ sudo python index.py` (sudo becasue we are opening port 80)
-5. Pop open your browser and enjoy!
+5. Pop open your browser to http://0.0.0.0:80/ and enjoy!
