@@ -18,10 +18,11 @@ While [Strava's](https://www.strava.com/features) application includes a handful
 [their API](http://developers.strava.com/) allows users to pull out their workout data to analyze on their own. Using 
 this, many users have developed their own apps, which [Strava shares a selection of.](https://www.strava.com/apps)  
 
-Alex has a strong idea about the statistics he is most interested in tracking and comparing, so we built a 
-[Plotly Dash]() application that allows the user log in to Strava and interact with their data in a handy and intuitive 
-to use dashboard. If you are not yet on Strava, but still want to play with the app, Alex has been kind enough to share 
-his workout history for you to play with and a handy tutorial explaining how to interact with the dashboard.
+Alex has a strong idea about the statistics he is most interested in tracking and comparing, so we built an application 
+using [Plotly Dash](https://plot.ly/products/dash/) that allows the user log in to Strava and interact with their data 
+in a handy and intuitive to use dashboard. If you are not yet on Strava, but still want to play with the app, Alex has 
+been kind enough to share his workout history for you to investigate and a handy tutorial explaining how to interact 
+with the dashboard.
 
 We are still in development, but once the app goes live, we will share it here!
 
