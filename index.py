@@ -56,20 +56,24 @@ def authorize():
 
 @server.route('/geo', methods=('GET', 'POST'))
 def show_geo_vis():
+    # return send_file("assets/alex_sample.gif", mimetype='image/gif')
     return render_template("geo_vis.html")
-
 
 @server.route('/fig/geo_vis')
 def make_geo_vis():
-    data = read_csv('users/0_alex/alex.csv')
-    geoplotlib.add_layer(AllTrailsLayer(map_data=data))
+    return send_file("assets/alex_sample.gif", mimetype='image/gif')
 
-    img = StringIO()
-    # return geoplotlib.show()
-    geoplotlib.savefig(img)
-    img.seek(0)
-
-    return send_file(img, mimetype='image/png')
+# @server.route('/fig/geo_vis')
+# def make_geo_vis():
+#     data = read_csv('users/0_alex/alex.csv')
+#     geoplotlib.add_layer(AllTrailsLayer(map_data=data))
+#
+#     img = StringIO()
+#     # return geoplotlib.show()
+#     geoplotlib.savefig(img)
+#     img.seek(0)
+#
+#     return send_file(img, mimetype='image/png')
 
 
 # man at work
@@ -100,4 +104,4 @@ def display_page(pathname):
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=80)
+    app.run_server(host='0.0.0.0', port=8080)

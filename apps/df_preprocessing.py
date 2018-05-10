@@ -52,4 +52,6 @@ def get_df_for_vis(username):
 
     col_names = ["runner_id", "lat", "lon", "timestamp"]
 
-    each_run_df = pd.DataFrame
+    each_run_df = pd.DataFrame(ret_data, columns=col_names)
+
+    return each_run_df
