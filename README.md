@@ -29,5 +29,6 @@ We are still in development, but once the app goes live, we will share it here!
 ### How to use locally
 1. `$ git clone https://github.com/ajhoward7/tracking-the-dons.git`
 2. `$ cd tracking-the-dons`
-3. `$ sudo python index.py` (sudo becasue we are opening port 80)
-4. Pop open your browser and enjoy!
+3. `$ pip install -r requirements.txt`
+4. `$ sudo python index.py` (sudo becasue we are opening port 80)
+5. Pop open your browser and enjoy!
