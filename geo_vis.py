@@ -3,6 +3,7 @@ from geoplotlib.core import BatchPainter
 import geoplotlib
 from geoplotlib.colors import colorbrewer
 from geoplotlib.utils import epoch_to_str, BoundingBox, read_csv
+from geoplotlib import savefig
 
 
 class AllTrailsLayer(BaseLayer):
