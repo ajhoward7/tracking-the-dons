@@ -59,9 +59,16 @@ def show_geo_vis():
     # return send_file("assets/alex_sample.gif", mimetype='image/gif')
     return render_template("geo_vis.html")
 
-@server.route('/fig/geo_vis')
-def make_geo_vis():
+
+@server.route('/fig/one_geo_vis')
+def make_one_geo_vis():
     return send_file("assets/alex_sample.gif", mimetype='image/gif')
+
+
+@server.route('/fig/all_geo_vis')
+def make_all_geo_vis():
+    return send_file("assets/alex_sample.gif", mimetype='image/gif')
+
 
 # @server.route('/fig/geo_vis')
 # def make_geo_vis():
@@ -104,4 +111,4 @@ def display_page(pathname):
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8080)
+    app.run_server(host='0.0.0.0', port=8001)

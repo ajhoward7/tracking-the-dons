@@ -7,6 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <style>
+        .imgContainer{
+            float:left;
+        }
+        .coupleImages {
+          width: 100%;
+          text-align: center;
+        }
+        #coupleImages {
+          width: 100%;
+          text-align: center;
+        }
+
+        .imageCap {
+           font-size: 14;
+        }
+
+        title {
+           font-size: 80;
+        }
+    </style>
 
     <title>Tracking the Dons</title>
 
@@ -37,10 +58,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="/">Home</a>
+              </li>
                         <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="https://github.com/ajhoward7/tracking-the-dons/issues/new">Report Bugs</a>
             </li>
-<li class="nav-item">
+        <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/tutorial">Tutorial</a>
             </li>
             <li class="nav-item">
@@ -57,17 +81,24 @@
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead text-center text-white d-flex" id="coupleImages">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase">
+            <h2 class="text-uppercase">
               <strong><br/><br/>Tracking the Dons</strong>
-            </h1>
+            </h2>
             <hr>
           </div>
-          <div class="col-lg-8 mx-auto">
-              <img src="{{ url_for('fig/geo_vis'}}" alt="Loot at Alex Go!" height="100">
+          <div class="coupleImages">
+              <div class="imgContainer">
+                <img src="{{ url_for('make_all_geo_vis')}}" alt="Loot at Alex Go!" height="250">
+                <p class=""imageCap>All the Alex's at once</p>
+              </div>
+              <div class="imgContainer">
+                <img src="{{ url_for('make_one_geo_vis')}}" alt="Loot at Alex Go!" height="250">
+                <p class="imageCap">Just one Alex</p>
+              </div>
           </div>
         </div>
       </div>
