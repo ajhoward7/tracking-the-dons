@@ -7,7 +7,7 @@ from datetime import *
 import polyline
 
 from app import app
-from df_preprocessing import df_preprocessing
+from .df_preprocessing import df_preprocessing
 from plotly_plotting import preprocess_activities
 
 mapbox_access_token = 'pk.eyJ1IjoiamFja2x1byIsImEiOiJjajNlcnh3MzEwMHZtMzNueGw3NWw5ZXF5In0.fk8k06T96Ml9CLGgKmk81w'
@@ -277,12 +277,12 @@ def update_parallel(year_value):
 
 def create_distance_hist(all_miles, this_miles):
     trace1 = go.Histogram(
-        histnorm='count',
+        #histnorm='probability',
         x=all_miles[(all_miles >= this_miles-0.5)&(all_miles < this_miles + 0.5)],
         hoverinfo='text'
     )
     trace0 = go.Histogram(
-        histnorm='count',
+        #histnorm='probability',
         x=all_miles[(all_miles < this_miles-0.5)|(all_miles >= this_miles + 0.5)],
         hoverinfo='text'
     )

@@ -12,8 +12,9 @@ days_dict = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Frida
 
 def preprocess_activities(username):
 
-    data = json.load(open('{}/activities.json'.format(username)))
+    data = json.load(open('users/{}/activities.json'.format(username)))
     activities_df = json_normalize(data)
+
 
     activities_df = activities_df[
         ['average_speed', 'distance', 'moving_time', 'name', 'start_date_local', 'id', 'workout_type', 'type',

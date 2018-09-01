@@ -336,12 +336,12 @@ def update_parallel_2(year_value):
 
 def create_distance_hist_2(all_miles, this_miles):
     trace1 = go.Histogram(
-        histnorm='count',
+        #histnorm='probability',
         x=all_miles[(all_miles >= this_miles-0.5)&(all_miles < this_miles + 0.5)],
         hoverinfo='text'
     )
     trace0 = go.Histogram(
-        histnorm='count',
+        #histnorm='probability',
         x=all_miles[(all_miles < this_miles-0.5)|(all_miles >= this_miles + 0.5)],
         hoverinfo='text'
     )
