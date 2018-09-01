@@ -2,6 +2,8 @@
 #### Alex Howard and Taylor Pellerin
 
 ----- 
+Note: this application must be run in Python2
+-----
   
     
 ### About the authors
